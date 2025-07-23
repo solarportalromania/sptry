@@ -19,7 +19,10 @@ const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY });
 
 
 // --- MIDDLEWARE ---
-app.use(cors());
+app.use(cors({
+  origin: ['https://your-frontend-domain.com'], // <-- update this!
+  credentials: true
+}));
 app.use(express.json({ limit: '10mb' })); // Increase limit for image uploads
 
 // A simple middleware to check for a secret header for some sensitive operations
